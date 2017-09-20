@@ -1,4 +1,4 @@
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,template){
  //    NProgress.start();
 
 	// NProgress.done();
@@ -30,6 +30,11 @@ define(['jquery','cookie'],function($){
          location.href='/main/login';
 	}
 
+	var loginInfo=$.cookie('loginInfo');
+	loginInfo=loginInfo&&JSON.parse(loginInfo);
+    var tpl='<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
+    var html=template.render(tpl,loginInfo);
+    $('.aside .profile').html(html);
 
 });
 	
